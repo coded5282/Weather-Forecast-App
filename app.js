@@ -18,11 +18,29 @@ weatherSite.config(function ($routeProvider) {
     
 });
 
+// SERVICES
+weatherSite.service('locationService', function() {
+    
+    this.city = "New York, NY"; 
+    
+});
+
 // CONTROLLERS 
-weatherSite.controller('homeController', ['$scope', function($scope) {
+weatherSite.controller('homeController', ['$scope', 'locationService', function($scope, locationService) {
+    
+    $scope.city = locationService.city; 
+    
+    $scope.$watch('city', function() {
+       locationService.city = $scope.city;         
+    });
+    
+    
+    
     
 }]);
 
-weatherSite.controller('forecastController', ['$scope', function($scope) {
+weatherSite.controller('forecastController', ['$scope', 'locationService', function($scope, locationService) {
+    
+    $scope.city = locationService.city; 
     
 }]);
