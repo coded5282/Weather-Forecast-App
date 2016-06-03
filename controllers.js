@@ -1,11 +1,15 @@
 // CONTROLLERS 
-weatherSite.controller('homeController', ['$scope', 'locationService', function($scope, locationService) { // controller to check for changes in city on homepage 
+weatherSite.controller('homeController', ['$scope', '$location', 'locationService', function($scope, $location, locationService) { // controller to check for changes in city on homepage 
     
     $scope.city = locationService.city; 
     
     $scope.$watch('city', function() {
        locationService.city = $scope.city;         
     });
+    
+    $scope.submit = function() {
+        $location.path("/forecast");
+    };
     
         
 }]);
