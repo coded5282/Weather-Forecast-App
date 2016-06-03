@@ -11,4 +11,4 @@ weatherSite.directive("weatherReport", function() {
             dateFormat: "@"
         }
     }
-})
+}); 
